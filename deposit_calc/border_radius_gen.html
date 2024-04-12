@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="border_radius.css">
+</head>
+<body>
+    <div class="container">
+        <div class="brGen-title">
+            <h2>border-radius generator</h2>
+            <table style="border: 1px solid rgb(160, 160, 160);">
+                <tr>
+                    <td>
+                        <label for="topLeft">top-left</label>
+                        <input type="range" id="topLeft" min="0" max="75" step="1" value="70">
+                    </td>
+                    <td></td>
+                    <td>
+                        <label for="topRight">top-right</label>
+                        <input type="range" id="topRight" min="0" max="75" step="1" value="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div id="border-radius-example" style="border-radius: 75px 75px 75px 0px;"></div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bottomLeft">bottom-left</label>
+                        <input type="range" id="bottomLeft" min="0" max="75" step="1" value="50">
+                       
+                    </td>
+                    <td></td>
+                    <td>
+                        <label for="bottomRight">bottom-right</label>
+                        <input type="range" id="bottomRight" min="0" max="75" step="1" value="10">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="textarea-result">
+            <label for="border-radius-result">
+                <h3>Для всех углов</h3>
+            </label>
+            <textarea id="border-radius-result" cols="55" rows="3" readonly></textarea>
+
+            <label for="border-radius-result2">
+                <h3>Каждый угол отдельно</h3>
+            </label>
+            <textarea id="border-radius-result2" cols="55" rows="6" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function borRadGen() {
+            let topLeft = document.getElementById('topLeft').value
+            let topRight = document.getElementById('topRight').value
+            let bottomLeft = document.getElementById('bottomLeft').value
+            let bottomRight = document.getElementById('bottomRight').value
+
+            let exampleBorder = document.getElementById('border-radius-example')            
+
+            let textarea = document.getElementById('border-radius-result')
+            let textarea2 = document.getElementById('border-radius-result2')
+
+            let code = `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
+
+            textarea.value = 'border-radius: ' + code
+            textarea2.value = `border-top-left-radius: ${topLeft}px;\nborder-top-right-radius: ${topRight}px;\nborder-bottom-left-radius: ${bottomLeft}px;\nborder-bottom-right-radius: ${bottomRight}px;`
+            exampleBorder.style.borderRadius = code
+        }
+
+        for(let item of document.querySelectorAll('.brGen-title input')) {
+            item.addEventListener('input', borRadGen)
+        }
+
+        borRadGen()
+        
+    </script>
+</body>
+</html>

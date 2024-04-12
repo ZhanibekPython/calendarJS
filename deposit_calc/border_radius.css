@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    max-width: 1200px;
+    background-color: rgb(209, 190, 164);
+    margin: 0 auto;
+}
+td {
+    width: 180px;
+    height: 100px;
+    padding-left: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+.container {
+    border: 3px solid white;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.brGen-title {
+    margin: 10px 10px 40px;
+    background-color: white;
+}
+#border-radius-example {
+    background-color: rgb(39, 18, 230);
+    width: 180px;
+    height: 100px;
+}
+h1, h2 , h3{
+    padding: 0;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 0px;
+    background-color: rgb(209, 190, 164);
+}
+.textarea-result {
+    padding-top: 18px;
+}
+textarea {
+    resize: none;
+    font-size: 20px;
+    padding-left: 5px;
+}
