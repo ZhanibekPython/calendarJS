@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container > table {
+    margin: 3px;
+}
+caption {
+    background-color: #c06666;
+    border: 1px solid black;
+}
+table tr > th, td {
+    border: 1px solid black
+}
+table tr > th:nth-child(6), table tr > th:nth-child(7) {
+    color: red;
+    background-color: rgb(148, 202, 123);
+}
+table tr > td {
+    border: 1px solid black;
+    text-align: center;
+}
+table tr > td:nth-child(6), table tr > td:nth-child(7) {
+    color: red;
+    background-color: rgb(148, 202, 123);
+}

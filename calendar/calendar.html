@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/calendar.css">
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        function dateTransform(dateString) {
+            let day = dateString.getDay();
+            if(day == 0) day = 7;
+            return day - 1;
+        }
+
+        function monthCalendar(year, month) {
+            let newMonth = month - 1
+            let date = new Date(year, newMonth)
+
+            let monthsList = ['Январь','Февраль','Март','Апрель','Май',
+            'Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',]
+
+            let table = `
+                <table>
+                    <caption>${monthsList[month-1]} - ${year}</caption>
+                        <tr>
+                            <th>Пн</th>
+                            <th>Вт</th>
+                            <th>Ср</th>
+                            <th>Чт</th>
+                            <th>Пт</th>
+                            <th>Сб</th>
+                            <th>Вс</th>
+                        </tr>
+                        <tr>
+            `;
+            
+            for(let i=0; i<dateTransform(date); i++) {
+                table += '<td></td>'
+            }
+
+            while (date.getMonth() == newMonth) {
+                table += '<td>' + date.getDate() + '</td>'
+                if (dateTransform(date) % 7 == 6) {
+                    table += '</tr><tr>'
+                }
+                date.setDate(date.getDate()+1);
+            }
+
+            if(dateTransform(date) != 0) {
+                for(let i=dateTransform(date); i<7; i++) {
+                    table += '<td></td>'
+                }
+            }
+            
+            table += '</tr></table>'
+            document.querySelector('.container').insertAdjacentHTML('beforeend', table)
+        
+        }
+
+        for (let i=1; i<13; i++) {
+            monthCalendar(2020, i)
+        }
+        
+    </script>
+</body>
+</html>
